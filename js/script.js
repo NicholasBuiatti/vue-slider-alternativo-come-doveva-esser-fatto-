@@ -31,6 +31,7 @@ createApp({
                 },
             ],
             imgAttiva : '',
+            timer : '',
         };
     },
     methods: {
@@ -39,6 +40,13 @@ createApp({
                 return true
             } else {
                 return false
+            }
+        },
+        activeThumb(index){
+            if ( index == this.imgAttiva ) {
+                return 'active'
+            } else {
+                return ''
             }
         },
         nextImg(){
@@ -53,5 +61,13 @@ createApp({
                 this.imgAttiva = 4
             }
         },
+        connectedImg(index){
+            this.imgAttiva = index;
+          },
+    },
+    mounted() {
+        this.timer = setInterval(() => {
+            this.nextImg();
+        }, 1000);
     },
 }).mount("#app");
