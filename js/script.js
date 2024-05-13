@@ -32,6 +32,7 @@ createApp({
             ],
             imgAttiva : '',
             timer : '',
+            stopInterval : true,
         };
     },
     methods: {
@@ -64,6 +65,16 @@ createApp({
         connectedImg(index){
             this.imgAttiva = index;
           },
+        stop(){
+            if (this.stopInterval == true) {
+                clearInterval(this.timer)
+            } 
+        },
+        play(){
+            this.timer = setInterval(() => {
+                this.nextImg();
+            }, 1000);
+        }
     },
     mounted() {
         this.timer = setInterval(() => {
