@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Slider</title>
     <link rel="stylesheet" href="./css/style.css" />
-    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+    
 </head>
 
 <body>
-
+<script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
     <div id="app">
 
         <div class="container">
             <div @mouseover="stop()" @mouseleave="play()" class="slider-wrapper" tabindex="0">
 
-                <div v-for="element, i in slides" v-show="blinded(i)" class="item">
+                <div v-for="element, i in slides" v-show="i == this.imgAttiva" class="item">
                     <img :src="element.image" alt="Spiderman" />
                     <div class="text">
                         <h3>{{ element.title }}</h3>

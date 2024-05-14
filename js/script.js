@@ -30,55 +30,60 @@ createApp({
                     text: "Marvel's Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.",
                 },
             ],
-            imgAttiva : '',
-            timer : '',
-            stopInterval : true,
+            imgAttiva: '',
+            timer: '',
+            stopInterval: true,
         };
     },
     methods: {
-        blinded(index){
-            if ( index == this.imgAttiva ) {
-                return true
-            } else {
-                return false
-            }
-        },
-        activeThumb(index){
-            if ( index == this.imgAttiva ) {
+        // blinded(index) {
+        //     if (index == this.imgAttiva) {
+        //         return true
+        //     } else {
+        //         return false
+        //     }
+        // },
+        activeThumb(index) {
+            if (index == this.imgAttiva) {
                 return 'active'
             } else {
                 return ''
             }
         },
-        nextImg(){
+        nextImg() {
             this.imgAttiva++;
-            if ( this.imgAttiva == 5) {
+            if (this.imgAttiva == 5) {
                 this.imgAttiva = 0
             }
         },
-        backImg(){
+        backImg() {
             this.imgAttiva--;
-            if ( this.imgAttiva == -1) {
+            if (this.imgAttiva == -1) {
                 this.imgAttiva = 4
             }
         },
-        connectedImg(index){
+        connectedImg(index) {
             this.imgAttiva = index;
-          },
-        stop(){
+        },
+        stop() {
             if (this.stopInterval == true) {
                 clearInterval(this.timer)
-            } 
+            }
         },
-        play(){
+        play() {
             this.timer = setInterval(() => {
                 this.nextImg();
             }, 1000);
         }
     },
     mounted() {
+
         this.timer = setInterval(() => {
             this.nextImg();
         }, 1000);
+
+        //this.timer = setInterval (this.nextImg, 1000)
+
+
     },
 }).mount("#app");
